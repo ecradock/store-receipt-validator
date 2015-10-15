@@ -1,61 +1,59 @@
 <?php
 namespace ReceiptValidator\GooglePlay;
 
-use ReceiptValidator\RunTimeException;
-
 /**
  * Class Client
  * @package ReceiptValidator\GooglePlay
  */
-class Client
+class Client implements ClientInterface
 {
-	/**
-	 * @var \Google_Client
-	 */
-	private $client;
+    /**
+     * @var \Google_Client
+     */
+    protected $client;
+    /**
+     * @var ConfigInterface
+     */
+    protected $config;
 
-	/**
-	 * @param Config $config
-	 * @throws RunTimeException
-	 */
-	function __construct(Config $config)
-	{
-		if(!file_exists($config->getCertPath()) || !is_readable($config->getCertPath()))
-		{
-			throw new RunTimeException('Invalid path provided for certificate');
-		}
+    /**
+     * @param \Google_Client $client
+     * @param ConfigInterface $config
+     */
+    public function __construct(\Google_Client $client, ConfigInterface $config)
+    {
+        $this->client = $client;
+    }
 
-		$certKey = file_get_contents($config->getCertPath());
+    /**
+     * @return \Google_Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
 
-		$auth = new \Google_Auth_AssertionCredentials(
-			$config->getServiceAccountName(),
-			array('https://www.googleapis.com/auth/androidpublisher'),
-			$certKey
-		);
-		$auth->sub = $config->getServiceEmail();
+    /**
+     * @param \Google_Client $client
+     */
+    public function setClient($client)
+    {
+        $this->client = $client;
+    }
 
-		$client = new \Google_Client();
-		$client->setClientId($config->getClientId());
-		$client->setAssertionCredentials($auth);
-		$client->setAccessType('offline');
+    /**
+     * @return ConfigInterface
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
 
-		$this->client = $client;
-		$this->config = $config;
-	}
-
-	/**
-	 * @return \Google_Client
-	 */
-	public function getClient()
-	{
-		return $this->client;
-	}
-
-	/**
-	 * @return Config
-	 */
-	public function getConfig()
-	{
-		return $this->config;
-	}
+    /**
+     * @param ConfigInterface $config
+     */
+    public function setConfig($config)
+    {
+        $this->config = $config;
+    }
 }
