@@ -23,6 +23,7 @@ class Client implements ClientInterface
     public function __construct(\Google_Client $client, ConfigInterface $config)
     {
         $this->client = $client;
+        $this->config = $config;
     }
 
     /**
