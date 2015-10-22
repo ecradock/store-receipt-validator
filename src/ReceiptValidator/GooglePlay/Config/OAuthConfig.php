@@ -4,10 +4,10 @@ namespace ReceiptValidator\GooglePlay\Config;
 use ReceiptValidator\GooglePlay\ConfigInterface;
 
 /**
- * Class OAuth
+ * Class OAuthConfig
  * @package ReceiptValidator\GooglePlay\Config
  */
-class OAuth implements ConfigInterface
+class OAuthConfig implements ConfigInterface
 {
     /**
      * @var string $clientId
@@ -32,7 +32,7 @@ class OAuth implements ConfigInterface
      * @param $refreshToken
      * @param $accessTokenCachePath
      */
-    public function __construct($clientId, $clientSecret, $refreshToken, $accessTokenCachePath = null)
+    public function __construct($clientId = '', $clientSecret = '', $refreshToken = '', $accessTokenCachePath = null)
     {
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;

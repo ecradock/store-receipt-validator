@@ -5,9 +5,9 @@ namespace ReceiptValidator\GooglePlay\Config;
 use ReceiptValidator\GooglePlay\ConfigInterface;
 
 /**
- * Class Config.
+ * Class CertificateConfig.
  */
-class Certificate implements ConfigInterface
+class CertificateConfig implements ConfigInterface
 {
     /**
      * @var string
@@ -32,7 +32,7 @@ class Certificate implements ConfigInterface
      * @param $serviceEmail
      * @param $certPath
      */
-    public function __construct($clientId, $serviceAccountName, $serviceEmail, $certPath)
+    public function __construct($clientId = '', $serviceAccountName = '', $serviceEmail = '', $certPath = '')
     {
         $this->clientId = $clientId;
         $this->serviceAccountName = $serviceAccountName;

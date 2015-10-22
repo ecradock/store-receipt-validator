@@ -15,7 +15,7 @@
 		"purchase",
 		"receipt"
 	],
-	"homepage" : "https://github.com/ecradock/store-receipt-validator",
+	"homepage" : "https://github.com/aporat/store-receipt-validator",
 	"license" : [
 		"Apache-2.0"
 	],
@@ -35,6 +35,6 @@
 	},
 	"support" : {
 		"email" : "adar.porat@gmail.com",
-		"issues" : "https://github.com/ecradock/store-receipt-validator/issues"
+		"issues" : "https://github.com/aporat/store-receipt-validator/issues"
 	}
 }

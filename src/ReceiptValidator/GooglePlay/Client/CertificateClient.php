@@ -3,13 +3,13 @@
 namespace ReceiptValidator\GooglePlay\Client;
 
 use ReceiptValidator\GooglePlay\Client;
-use ReceiptValidator\GooglePlay\Config\Certificate as CertificateConfig;
+use ReceiptValidator\GooglePlay\Config\CertificateConfig;
 use ReceiptValidator\RunTimeException;
 
 /**
- * Class Certificate.
+ * Class CertificateClient.
  */
-class Certificate extends Client
+class CertificateClient extends Client
 {
     const ANDROID_PUBLISHER_URI = 'https://www.googleapis.com/auth/androidpublisher';
 

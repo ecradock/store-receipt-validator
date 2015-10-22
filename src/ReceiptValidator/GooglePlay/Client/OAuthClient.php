@@ -2,14 +2,14 @@
 namespace ReceiptValidator\GooglePlay\Client;
 
 use ReceiptValidator\GooglePlay\Client;
-use ReceiptValidator\GooglePlay\Config\OAuth as OAuthConfig;
+use ReceiptValidator\GooglePlay\Config\OAuthConfig;
 use ReceiptValidator\RunTimeException;
 
 /**
  * Class OAuth
  * @package ReceiptValidator\GooglePlay\Client
  */
-class OAuth extends Client
+class OAuthClient extends Client
 {
     /**
      * @var string
