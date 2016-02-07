@@ -1,8 +1,13 @@
 <?php
 namespace ReceiptValidator\iTunes;
 
+use Doctrine\Common\Annotations\AnnotationRegistry;
 use Guzzle\Http\Client as GuzzleClient;
-use ReceiptValidator\iTunes\Response;
+use JMS\Serializer\EventDispatcher\EventDispatcher;
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializerInterface;
+use ReceiptValidator\iTunes\SerializationSubscriber\LatestReceiptDeserializerSubscriber;
+use ReceiptValidator\iTunes\SerializationSubscriber\PurchaseInfoDeserializerSubscriber;
 use ReceiptValidator\RunTimeException;
 
 class Validator
@@ -41,10 +46,32 @@ class Validator
      */
     protected $_client = null;
 
-    public function __construct($endpoint = self::ENDPOINT_PRODUCTION)
+    /**
+     * Serializer
+     *
+     * @var SerializerInterface
+     */
+    protected $serializer;
+
+    public function __construct($endpoint = self::ENDPOINT_PRODUCTION, SerializerInterface $serializer = null)
     {
         if ($endpoint != self::ENDPOINT_PRODUCTION && $endpoint != self::ENDPOINT_SANDBOX) {
             throw new RunTimeException("Invalid endpoint '{$endpoint}'");
+        }
+
+        if($serializer === null)
+        {
+            // @TODO: See if we can refactor to not require this.
+            AnnotationRegistry::registerLoader('class_exists');
+
+            $builder = SerializerBuilder::create();
+
+            $builder->configureListeners(function(EventDispatcher $dispatcher) {
+                $dispatcher->addSubscriber(new LatestReceiptDeserializerSubscriber());
+                $dispatcher->addSubscriber(new PurchaseInfoDeserializerSubscriber());
+            });
+
+            $this->serializer = $builder->build();
         }
 
         $this->_endpoint = $endpoint;
@@ -173,7 +200,8 @@ class Validator
             throw new RunTimeException('Unable to get response from itunes server');
         }
 
-        $response = new Response($httpResponse->json());
+        $response = $this->serializer->deserialize($httpResponse->getBody(true), 'ReceiptValidator\iTunes\Response', 'json');
+
 
         // on a 21007 error retry the request in the sandbox environment (if the current environment is Production)
         // these are receipts from apple review team

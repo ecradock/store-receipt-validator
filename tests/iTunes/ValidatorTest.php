@@ -51,9 +51,8 @@ class ValidatorTest extends PHPUnit_Framework_TestCase
     public function testValidateWithInvalidReceipt()
     {
         $response = $this->validator->setReceiptData($this->testInvaildReceiptData)->validate();
-    
         
-        $this->assertEquals(Response::RESULT_DATA_MALFORMED, $response->getResultCode());
+        $this->assertEquals(Response::RESULT_DATA_MALFORMED, $response->getStatus());
         $this->assertFalse($response->isValid(), 'receipt must be invalid');
     }
 }

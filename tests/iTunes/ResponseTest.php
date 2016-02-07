@@ -6,36 +6,14 @@ use ReceiptValidator\iTunes\Response;
  */
 class ResponseTest extends PHPUnit_Framework_TestCase
 {
-    
-    public function testInvalidOptionsToConstructor()
-    {
-        $this->setExpectedException("ReceiptValidator\\RuntimeException", "Response must be a scalar value");
-        
-        $response = new Response('invalid');
-    }
-    
-    public function testInvalidReceipt()
-    {
-        $response = new Response(array('status' => 21002, 'receipt' => array()));
-        
-        $this->assertFalse($response->isValid(), 'receipt must be invalid');
-        $this->assertEquals(21002, $response->getResultCode(), 'receipt result code must match');
-    }
-    
-    public function testReceiptSentToWrongEndpoint()
-    {
-        $response = new Response(array('status' => 21007));
-
-        $this->assertFalse($response->isValid(), 'receipt must be invalid');
-        $this->assertEquals(21007, $response->getResultCode(), 'receipt result code must match');
-    }
+    // @TODO: Add tests for JMS centric functionality
 
     public function testValidReceipt()
     {
         $response = new Response(array('status' => 0, 'receipt' => array()));
     
         $this->assertTrue($response->isValid(), 'receipt must be valid');
-        $this->assertEquals(0, $response->getResultCode(), 'receipt result code must match');
+        $this->assertEquals(0, $response->getStatus(), 'receipt result code must match');
     }
     
 }
