@@ -205,7 +205,7 @@ class Validator
 
         // on a 21007 error retry the request in the sandbox environment (if the current environment is Production)
         // these are receipts from apple review team
-        if ($this->_endpoint == self::ENDPOINT_PRODUCTION && $response->getResultCode() == Response::RESULT_SANDBOX_RECEIPT_SENT_TO_PRODUCTION) {
+        if ($this->_endpoint == self::ENDPOINT_PRODUCTION && $response->getStatus() == Response::RESULT_SANDBOX_RECEIPT_SENT_TO_PRODUCTION) {
             $client = new GuzzleClient(self::ENDPOINT_SANDBOX);
 
             $httpResponse = $client->post(null, null, $this->encodeRequest(), array('verify' => false))->send();
