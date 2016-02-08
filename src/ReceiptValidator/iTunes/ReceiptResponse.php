@@ -208,7 +208,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
     public function getExpiresDateFormatted()
     {
@@ -216,7 +216,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param string $expiresDateFormatted
+     * @param \DateTime $expiresDateFormatted
      */
     public function setExpiresDateFormatted($expiresDateFormatted)
     {
