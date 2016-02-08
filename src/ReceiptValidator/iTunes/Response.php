@@ -65,7 +65,7 @@ class Response
     protected $latestReceiptInfo;
 
     /**
-     * @return mixed
+     * @return ReceiptResponse
      */
     public function getLatestExpiredReceiptInfo()
     {
@@ -73,7 +73,7 @@ class Response
     }
 
     /**
-     * @param mixed $latestExpiredReceiptInfo
+     * @param ReceiptResponse $latestExpiredReceiptInfo
      */
     public function setLatestExpiredReceiptInfo($latestExpiredReceiptInfo)
     {
@@ -81,7 +81,7 @@ class Response
     }
 
     /**
-     * @return mixed
+     * @return LatestReceiptResponse
      */
     public function getLatestReceipt()
     {
@@ -89,7 +89,7 @@ class Response
     }
 
     /**
-     * @param mixed $latestReceipt
+     * @param LatestReceiptResponse $latestReceipt
      */
     public function setLatestReceipt($latestReceipt)
     {
@@ -97,7 +97,7 @@ class Response
     }
 
     /**
-     * @return mixed
+     * @return LatestReceiptResponse
      */
     public function getLatestReceiptInfo()
     {
@@ -105,7 +105,7 @@ class Response
     }
 
     /**
-     * @param mixed $latestReceiptInfo
+     * @param ReceiptResponse $latestReceiptInfo
      */
     public function setLatestReceiptInfo($latestReceiptInfo)
     {
@@ -113,7 +113,7 @@ class Response
     }
 
     /**
-     * @return mixed
+     * @return ReceiptResponse
      */
     public function getReceipt()
     {
@@ -121,7 +121,7 @@ class Response
     }
 
     /**
-     * @param mixed $receipt
+     * @param ReceiptResponse $receipt
      */
     public function setReceipt($receipt)
     {
@@ -129,7 +129,7 @@ class Response
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getStatus()
     {
@@ -137,13 +137,16 @@ class Response
     }
 
     /**
-     * @param mixed $status
+     * @param int $status
      */
     public function setStatus($status)
     {
         $this->status = $status;
     }
 
+    /**
+     * @return bool
+     */
     public function isValid()
     {
         return self::RESULT_OK == $this->getStatus();

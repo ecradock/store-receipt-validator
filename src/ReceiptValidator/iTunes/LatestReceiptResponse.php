@@ -9,6 +9,11 @@ class LatestReceiptResponse
     /**
      * @Type("string")
      */
+    protected $raw;
+
+    /**
+     * @Type("string")
+     */
     protected $signature;
 
     /**
@@ -34,7 +39,7 @@ class LatestReceiptResponse
     protected $signingStatus;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getEnvironment()
     {
@@ -42,7 +47,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @param mixed $environment
+     * @param string $environment
      */
     public function setEnvironment($environment)
     {
@@ -50,7 +55,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPod()
     {
@@ -58,7 +63,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @param mixed $pod
+     * @param string $pod
      */
     public function setPod($pod)
     {
@@ -66,7 +71,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPurchaseInfo()
     {
@@ -74,7 +79,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @param mixed $purchaseInfo
+     * @param ReceiptResponse $purchaseInfo
      */
     public function setPurchaseInfo($purchaseInfo)
     {
@@ -82,7 +87,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getSignature()
     {
@@ -90,7 +95,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @param mixed $signature
+     * @param string $signature
      */
     public function setSignature($signature)
     {
@@ -98,7 +103,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getSigningStatus()
     {
@@ -106,10 +111,26 @@ class LatestReceiptResponse
     }
 
     /**
-     * @param mixed $signingStatus
+     * @param string $signingStatus
      */
     public function setSigningStatus($signingStatus)
     {
         $this->signingStatus = $signingStatus;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRaw()
+    {
+        return $this->raw;
+    }
+
+    /**
+     * @param string $raw
+     */
+    public function setRaw($raw)
+    {
+        $this->raw = $raw;
     }
 }

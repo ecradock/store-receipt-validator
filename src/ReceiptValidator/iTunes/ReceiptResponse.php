@@ -118,7 +118,7 @@ class ReceiptResponse
     protected $webOrderLineItemId = '';
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getBid()
     {
@@ -126,7 +126,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $bid
+     * @param string $bid
      */
     public function setBid($bid)
     {
@@ -134,7 +134,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getBvrs()
     {
@@ -142,7 +142,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $bvrs
+     * @param string $bvrs
      */
     public function setBvrs($bvrs)
     {
@@ -150,7 +150,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getExpiresDate()
     {
@@ -158,7 +158,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $expiresDate
+     * @param string $expiresDate
      */
     public function setExpiresDate($expiresDate)
     {
@@ -166,7 +166,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getExpiresDateFormatted()
     {
@@ -174,7 +174,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $expiresDateFormatted
+     * @param string $expiresDateFormatted
      */
     public function setExpiresDateFormatted($expiresDateFormatted)
     {
@@ -182,7 +182,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getExpiresDateFormattedPst()
     {
@@ -190,7 +190,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $expiresDateFormattedPst
+     * @param string $expiresDateFormattedPst
      */
     public function setExpiresDateFormattedPst($expiresDateFormattedPst)
     {
@@ -198,7 +198,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getItemId()
     {
@@ -206,7 +206,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $itemId
+     * @param string $itemId
      */
     public function setItemId($itemId)
     {
@@ -214,7 +214,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOriginalPurchaseDate()
     {
@@ -222,7 +222,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $originalPurchaseDate
+     * @param string $originalPurchaseDate
      */
     public function setOriginalPurchaseDate($originalPurchaseDate)
     {
@@ -230,7 +230,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOriginalPurchaseDateMs()
     {
@@ -238,7 +238,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $originalPurchaseDateMs
+     * @param string $originalPurchaseDateMs
      */
     public function setOriginalPurchaseDateMs($originalPurchaseDateMs)
     {
@@ -246,7 +246,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOriginalPurchaseDatePst()
     {
@@ -254,7 +254,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $originalPurchaseDatePst
+     * @param string $originalPurchaseDatePst
      */
     public function setOriginalPurchaseDatePst($originalPurchaseDatePst)
     {
@@ -262,7 +262,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getOriginalTransactionId()
     {
@@ -270,7 +270,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $originalTransactionId
+     * @param string $originalTransactionId
      */
     public function setOriginalTransactionId($originalTransactionId)
     {
@@ -278,7 +278,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getProductId()
     {
@@ -286,7 +286,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $productId
+     * @param string $productId
      */
     public function setProductId($productId)
     {
@@ -294,7 +294,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPurchaseDate()
     {
@@ -302,7 +302,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $purchaseDate
+     * @param string $purchaseDate
      */
     public function setPurchaseDate($purchaseDate)
     {
@@ -310,7 +310,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPurchaseDateMs()
     {
@@ -318,7 +318,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $purchaseDateMs
+     * @param string $purchaseDateMs
      */
     public function setPurchaseDateMs($purchaseDateMs)
     {
@@ -326,7 +326,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPurchaseDatePst()
     {
@@ -334,7 +334,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $purchaseDatePst
+     * @param string $purchaseDatePst
      */
     public function setPurchaseDatePst($purchaseDatePst)
     {
@@ -342,7 +342,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getQuantity()
     {
@@ -350,7 +350,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $quantity
+     * @param string $quantity
      */
     public function setQuantity($quantity)
     {
@@ -358,7 +358,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTransactionId()
     {
@@ -366,7 +366,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $transactionId
+     * @param string $transactionId
      */
     public function setTransactionId($transactionId)
     {
@@ -374,7 +374,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getUniqueIdentifier()
     {
@@ -382,7 +382,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $uniqueIdentifier
+     * @param string $uniqueIdentifier
      */
     public function setUniqueIdentifier($uniqueIdentifier)
     {
@@ -390,7 +390,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getUniqueVendorIdentifier()
     {
@@ -398,7 +398,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $uniqueVendorIdentifier
+     * @param string $uniqueVendorIdentifier
      */
     public function setUniqueVendorIdentifier($uniqueVendorIdentifier)
     {
@@ -406,7 +406,7 @@ class ReceiptResponse
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getWebOrderLineItemId()
     {
@@ -414,7 +414,7 @@ class ReceiptResponse
     }
 
     /**
-     * @param mixed $webOrderLineItemId
+     * @param string $webOrderLineItemId
      */
     public function setWebOrderLineItemId($webOrderLineItemId)
     {

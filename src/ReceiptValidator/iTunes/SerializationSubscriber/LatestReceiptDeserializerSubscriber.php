@@ -36,8 +36,11 @@ class LatestReceiptDeserializerSubscriber extends AppleJsonDeserializerSubscribe
 
         if(isset($data['latest_receipt']))
         {
+            $data['raw'] = $data['latest_receipt'];
             $data = $this->normalizeFields($data, array('latest_receipt'));
+
             $event->setData($data);
+
         }
     }
 }
