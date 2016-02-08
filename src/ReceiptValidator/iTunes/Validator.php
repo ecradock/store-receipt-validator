@@ -208,7 +208,7 @@ class Validator
         // on a 21007 error retry the request in the sandbox environment (if the current environment is Production)
         // these are receipts from apple review team
         if($this->isSandboxReceipt($response, $attempt)) {
-            $this->setEndpoint(self::ENDPOINT_SANDBOX);
+            $this->getClient()->setBaseUrl(self::ENDPOINT_SANDBOX);
 
             return $this->validate($receiptData, $iStoreSharedSecret, $attempt + 1);
         }
