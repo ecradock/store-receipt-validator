@@ -16,6 +16,6 @@ class AppleJsonNormalizer implements Normalizer
      */
     public function normalize($contents)
     {
-        return preg_replace(array( '/;/', '/ = /', "/[\s]+/", '/,\}/'), array(',', ':', '', '}'), $contents);
+        return preg_replace(array( '/;/', '/ = /', "/[\r\n]+/", '/,\}/'), array(',', ':', '', '}'), $contents);
     }
 }
