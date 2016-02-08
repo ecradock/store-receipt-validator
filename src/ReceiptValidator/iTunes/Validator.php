@@ -17,6 +17,8 @@ class Validator
 
     const ENDPOINT_PRODUCTION = 'https://buy.itunes.apple.com/verifyReceipt';
 
+    const ATTEMPT_THRESHOLD = 1;
+
     /**
      * endpoint url
      *
@@ -181,11 +183,12 @@ class Validator
      * @param string $receiptData
      * @param string $iStoreSharedSecret
      *
+     * @param int $attempt
      * @return Response
+     * @throws RunTimeException
      */
-    public function validate($receiptData = null, $iStoreSharedSecret = null)
+    public function validate($receiptData = null, $iStoreSharedSecret = null, $attempt = 0)
     {
-
         if ($receiptData != null) {
             $this->setReceiptData($receiptData);
         }
@@ -202,21 +205,26 @@ class Validator
 
         $response = $this->serializer->deserialize($httpResponse->getBody(true), 'ReceiptValidator\iTunes\Response', 'json');
 
-
         // on a 21007 error retry the request in the sandbox environment (if the current environment is Production)
         // these are receipts from apple review team
-        if ($this->_endpoint == self::ENDPOINT_PRODUCTION && $response->getStatus() == Response::RESULT_SANDBOX_RECEIPT_SENT_TO_PRODUCTION) {
-            $client = new GuzzleClient(self::ENDPOINT_SANDBOX);
+        if($this->isSandboxReceipt($response, $attempt)) {
+            $this->setEndpoint(self::ENDPOINT_SANDBOX);
 
-            $httpResponse = $client->post(null, null, $this->encodeRequest(), array('verify' => false))->send();
-
-            if ($httpResponse->getStatusCode() != 200) {
-                throw new RunTimeException('Unable to get response from itunes server');
-            }
-
-            $response = new Response($httpResponse->json());
+            return $this->validate($receiptData, $iStoreSharedSecret, $attempt + 1);
         }
 
         return $response;
+    }
+
+    /**
+     * @param Response $response
+     * @param $attempt
+     * @return bool
+     */
+    protected function isSandboxReceipt(Response $response, $attempt)
+    {
+        return ($attempt < self::ATTEMPT_THRESHOLD
+            && $this->_endpoint == self::ENDPOINT_PRODUCTION
+            && $response->getStatus() == Response::RESULT_SANDBOX_RECEIPT_SENT_TO_PRODUCTION);
     }
 }
