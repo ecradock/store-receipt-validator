@@ -71,7 +71,7 @@ class LatestReceiptResponse
     }
 
     /**
-     * @return string
+     * @return ReceiptResponse
      */
     public function getPurchaseInfo()
     {
