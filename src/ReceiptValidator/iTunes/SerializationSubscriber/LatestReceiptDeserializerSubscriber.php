@@ -4,10 +4,10 @@ namespace ReceiptValidator\iTunes\SerializationSubscriber;
 use JMS\Serializer\EventDispatcher\PreDeserializeEvent;
 
 /**
- * Class LatestReceiptDeSerializerSubscriber
+ * Class LatestReceiptDeserializerSubscriber
  * @package ReceiptValidator\iTunes\SerializationSubscriber
  */
-class LatestReceiptDeSerializerSubscriber extends AppleJsonDeserializerSubscriberAbstract
+class LatestReceiptDeserializerSubscriber extends AppleJsonDeserializerSubscriberAbstract
 {
     /**
      * Returns the events to which this class has subscribed.
