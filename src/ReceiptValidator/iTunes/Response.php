@@ -37,30 +37,35 @@ class Response
     const RESULT_PRODUCTION_RECEIPT_SENT_TO_SANDBOX = 21008;
 
     /**
-    * @Type("integer")
+     * @Type("integer")
+     * @var int $status
     */
     protected $status;
 
     /**
-    * @Type("ReceiptValidator\iTunes\ReceiptResponse")
+     * @Type("ReceiptValidator\iTunes\ReceiptResponse")
+     * @var ReceiptResponse $receipt
     */
     protected $receipt;
 
     /**
-    * @Type("ReceiptValidator\iTunes\ReceiptResponse")
-    * @SerializedName("latest_expired_receipt_info")
+     * @Type("ReceiptValidator\iTunes\ReceiptResponse")
+     * @SerializedName("latest_expired_receipt_info")
+     * @var ReceiptResponse $latestExpiredReceiptInfo
     */
     protected $latestExpiredReceiptInfo;
 
     /**
-    * @Type("ReceiptValidator\iTunes\LatestReceiptResponse")
-    * @SerializedName("latest_receipt")
+     * @Type("string")
+     * @SerializedName("latest_receipt")
+     * @var string $latestReceipt
     */
     protected $latestReceipt;
 
     /**
      * @Type("ReceiptValidator\iTunes\ReceiptResponse")
      * @SerializedName("latest_receipt_info")
+     * @var ReceiptResponse $latestReceiptInfo
      */
     protected $latestReceiptInfo;
 
@@ -81,7 +86,7 @@ class Response
     }
 
     /**
-     * @return LatestReceiptResponse
+     * @return string
      */
     public function getLatestReceipt()
     {
@@ -89,7 +94,7 @@ class Response
     }
 
     /**
-     * @param LatestReceiptResponse $latestReceipt
+     * @param string $latestReceipt
      */
     public function setLatestReceipt($latestReceipt)
     {
@@ -97,10 +102,22 @@ class Response
     }
 
     /**
-     * @return LatestReceiptResponse
+     * @return ReceiptResponse
      */
     public function getLatestReceiptInfo()
     {
+        if(count($this->getReceipt()->getInApp()) > 0)
+        {
+            $inAppReceipts = $this->getReceipt()->getInApp();
+
+            return $inAppReceipts[count($inAppReceipts)-1];
+        }
+
+        if(!empty($this->latestExpiredReceiptInfo))
+        {
+            return $this->latestExpiredReceiptInfo;
+        }
+
         return $this->latestReceiptInfo;
     }
 

@@ -7,6 +7,48 @@ use JMS\Serializer\Annotation\SerializedName;
 class ReceiptResponse
 {
     /**
+     * iOS 7 >
+     * @Type("string")
+     * @SerializedName("adam_id")
+     */
+    protected $adamId;
+
+    /**
+     * >= iOS 7
+     * @Type("string")
+     * @SerializedName("application_version")
+     */
+    protected $applicationVersion;
+
+    /**
+     * >= iOS 7
+     * @Type("string")
+     * @SerializedName("bundle_id")
+     */
+    protected $bundleId;
+
+    /**
+     * >= iOS 7
+     * @Type("string")
+     * @SerializedName("download_id")
+     */
+    protected $downloadId;
+
+    /**
+     * >= iOS 7
+     * @Type("array<ReceiptResponse>")
+     * @SerializedName("in_app")
+     */
+    protected $inApp = array();
+
+    /**
+     * >= iOS 7
+     * @Type("boolean")
+     * @SerializedName("is_trial_period")
+     */
+    protected $isTrialPeriod;
+
+    /**
     * @Type("string")
     */
     protected $bid = '';
@@ -23,7 +65,7 @@ class ReceiptResponse
     protected $expiresDate = '';
 
     /**
-    * @Type("string")
+    * @Type("DateTime<'Y-m-d H:i:s Etc/e'>")
     * @SerializedName("expires_date_formatted")
     */
     protected $expiresDateFormatted = '';
@@ -419,6 +461,112 @@ class ReceiptResponse
     public function setWebOrderLineItemId($webOrderLineItemId)
     {
         $this->webOrderLineItemId = $webOrderLineItemId;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasActiveSubscription()
+    {
+        $now = new \DateTime();
+
+        return $this->expiresDateFormatted >= $now;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdamId()
+    {
+        return $this->adamId;
+    }
+
+    /**
+     * @param string $adamId
+     */
+    public function setAdamId($adamId)
+    {
+        $this->adamId = $adamId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApplicationVersion()
+    {
+        return $this->applicationVersion;
+    }
+
+    /**
+     * @param string $applicationVersion
+     */
+    public function setApplicationVersion($applicationVersion)
+    {
+        $this->applicationVersion = $applicationVersion;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBundleId()
+    {
+        return $this->bundleId;
+    }
+
+    /**
+     * @param string $bundleId
+     */
+    public function setBundleId($bundleId)
+    {
+        $this->bundleId = $bundleId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDownloadId()
+    {
+        return $this->downloadId;
+    }
+
+    /**
+     * @param string $downloadId
+     */
+    public function setDownloadId($downloadId)
+    {
+        $this->downloadId = $downloadId;
+    }
+
+    /**
+     * @return array
+     */
+    public function getInApp()
+    {
+        return $this->inApp;
+    }
+
+    /**
+     * @param array $inApp
+     */
+    public function setInApp($inApp)
+    {
+        $this->inApp = $inApp;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getIsTrialPeriod()
+    {
+        return $this->isTrialPeriod;
+    }
+
+    /**
+     * @param bool $isTrialPeriod
+     */
+    public function setIsTrialPeriod($isTrialPeriod)
+    {
+        $this->isTrialPeriod = $isTrialPeriod;
     }
 }
 

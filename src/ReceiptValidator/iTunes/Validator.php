@@ -66,14 +66,7 @@ class Validator
             // @TODO: See if we can refactor to not require this.
             AnnotationRegistry::registerLoader('class_exists');
 
-            $builder = SerializerBuilder::create();
-
-            $builder->configureListeners(function(EventDispatcher $dispatcher) {
-                $dispatcher->addSubscriber(new LatestReceiptDeserializerSubscriber());
-                $dispatcher->addSubscriber(new PurchaseInfoDeserializerSubscriber());
-            });
-
-            $this->serializer = $builder->build();
+            $this->serializer = SerializerBuilder::create()->build();
         }
 
         $this->_endpoint = $endpoint;
