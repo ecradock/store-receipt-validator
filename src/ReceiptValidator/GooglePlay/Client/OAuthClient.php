@@ -54,7 +54,7 @@ class OAuthClient extends Client
         $client->setClientSecret($config->getClientSecret());
 
         try {
-            $client->setAccessToken(unserialize($this->readCache()));
+            $client->setAccessToken(json_decode($this->readCache(), true));
         } catch (\Exception $e) {
             // skip exceptions when the access token is not valid
         }
@@ -62,7 +62,7 @@ class OAuthClient extends Client
         try {
             if ($client->isAccessTokenExpired()) {
                 $client->refreshToken($config->getRefreshToken());
-                $this->writeCache(serialize($client->getAccessToken()));
+                $this->writeCache(json_encode($client->getAccessToken()));
             }
         } catch (\Exception $e) {
             throw new RuntimeException('Failed refreshing access token - ' . $e->getMessage());
