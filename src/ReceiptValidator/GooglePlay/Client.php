@@ -1,6 +1,8 @@
 <?php
 namespace ReceiptValidator\GooglePlay;
 
+use \Google_Client;
+
 /**
  * Class Client
  * @package ReceiptValidator\GooglePlay
@@ -8,7 +10,7 @@ namespace ReceiptValidator\GooglePlay;
 class Client implements ClientInterface
 {
     /**
-     * @var \Google_Client
+     * @var Google_Client
      */
     protected $client;
     /**
@@ -17,17 +19,17 @@ class Client implements ClientInterface
     protected $config;
 
     /**
-     * @param \Google_Client $client
+     * @param Google_Client $client
      * @param ConfigInterface $config
      */
-    public function __construct(\Google_Client $client, ConfigInterface $config)
+    public function __construct(Google_Client $client, ConfigInterface $config)
     {
         $this->client = $client;
         $this->config = $config;
     }
 
     /**
-     * @return \Google_Client
+     * @return Google_Client
      */
     public function getClient()
     {
@@ -35,7 +37,7 @@ class Client implements ClientInterface
     }
 
     /**
-     * @param \Google_Client $client
+     * @param Google_Client $client
      */
     public function setClient($client)
     {

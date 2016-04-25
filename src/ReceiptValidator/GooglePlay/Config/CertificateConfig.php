@@ -24,36 +24,36 @@ class CertificateConfig implements ConfigInterface
     /**
      * @var string
      */
-    protected $certPath;
+    protected $jsonPath;
 
     /**
      * @param $clientId
      * @param $serviceAccountName
      * @param $serviceEmail
-     * @param $certPath
+     * @param $jsonPath
      */
-    public function __construct($clientId = '', $serviceAccountName = '', $serviceEmail = '', $certPath = '')
+    public function __construct($clientId = '', $serviceAccountName = '', $serviceEmail = '', $jsonPath = '')
     {
         $this->clientId = $clientId;
         $this->serviceAccountName = $serviceAccountName;
         $this->serviceEmail = $serviceEmail;
-        $this->certPath = $certPath;
+        $this->jsonPath = $jsonPath;
     }
 
     /**
      * @return string
      */
-    public function getCertPath()
+    public function getJsonPath()
     {
-        return $this->certPath;
+        return $this->jsonPath;
     }
 
     /**
-     * @param string $certPath
+     * @param string $jsonPath
      */
-    public function setCertPath($certPath)
+    public function setJsonPath($jsonPath)
     {
-        $this->certPath = $certPath;
+        $this->jsonPath = $jsonPath;
     }
 
     /**
