@@ -1,6 +1,9 @@
 <?php
 namespace ReceiptValidator\GooglePlay;
 
+use \Google_Client;
+use \Google_Service_AndroidPublisher;
+
 class Validator
 {
     const TYPE_PURCHASE = 1;
@@ -9,12 +12,12 @@ class Validator
     /**
      * google client
      *
-     * @var \Google_Client
+     * @var Google_Client
      */
     protected $_client = null;
 
     /**
-     * @var \Google_Service_AndroidPublisher
+     * @var Google_Service_AndroidPublisher
      */
     protected $_androidPublisherService = null;
 
@@ -38,9 +41,9 @@ class Validator
      */
     protected $_product_id = null;
 
-    public function __construct(\Google_Client $client = null)
+    public function __construct(Google_Client $client = null)
     {
-        $this->_androidPublisherService = new \Google_Service_AndroidPublisher($client);
+        $this->_androidPublisherService = new Google_Service_AndroidPublisher($client);
     }
 
     /**
@@ -109,4 +112,3 @@ class Validator
         return $response;
     }
 }
-

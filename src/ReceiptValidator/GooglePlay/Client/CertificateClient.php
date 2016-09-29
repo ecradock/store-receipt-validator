@@ -5,6 +5,7 @@ namespace ReceiptValidator\GooglePlay\Client;
 use ReceiptValidator\GooglePlay\Client;
 use ReceiptValidator\GooglePlay\Config\CertificateConfig;
 use ReceiptValidator\RunTimeException;
+use \Google_Client;
 
 /**
  * Class CertificateClient.
@@ -14,7 +15,7 @@ class CertificateClient extends Client
     const ANDROID_PUBLISHER_URI = 'https://www.googleapis.com/auth/androidpublisher';
 
     /**
-     * @var \Google_Client
+     * @var Google_Client
      */
     protected $client;
 
@@ -25,17 +26,12 @@ class CertificateClient extends Client
      */
     public function __construct(CertificateConfig $config)
     {
-        $auth = new \Google_Auth_AssertionCredentials(
-            $config->getServiceAccountName(),
-            array(self::ANDROID_PUBLISHER_URI),
-            $this->getCertificateKey($config->getCertPath())
-        );
-        $auth->sub = $config->getServiceEmail();
+        $client = new Google_Client();
 
-        $client = new \Google_Client();
         $client->setClientId($config->getClientId());
-        $client->setAssertionCredentials($auth);
+        $client->setAuthConfig($config->getJsonPath());
         $client->setAccessType('offline');
+        $client->setScope(self::ANDROID_PUBLISHER_URI);
 
         $this->client = $client;
         $this->config = $config;
