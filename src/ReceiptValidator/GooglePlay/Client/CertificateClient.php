@@ -31,7 +31,7 @@ class CertificateClient extends Client
         $client->setClientId($config->getClientId());
         $client->setAuthConfig($config->getJsonPath());
         $client->setAccessType('offline');
-        $client->setScope(self::ANDROID_PUBLISHER_URI);
+        $client->addScope(self::ANDROID_PUBLISHER_URI);
 
         $this->client = $client;
         $this->config = $config;
